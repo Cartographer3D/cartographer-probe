@@ -86,11 +86,55 @@ z_hop: 10
 
 You will also need to update your Z configuration settings. 
 
-```
+```yaml
 [stepper_z]
 endstop_pin: probe:z_virtual_endstop # use cartographer as virtual endstop
 homing_retract_dist: 0 # cartographer needs this to be set to 0
 ```
 Finally, you need to ensure you have a suitable bed_mesh section. Information can be found [here](https://www.klipper3d.org/Bed_Mesh.html)
+
+### Calibrate Cartographer
+
+Home the machine in X and Y:
+```gcode
+G28 X Y
+```
+
+You will now need to position the nozzle at the center of the bed, if you have a 300 x 300 bed use the following: 
+```gcode
+G0 X150 Y150
+```
+
+Start the calibration process:
+```
+IDM_CALIBRATE
+```
+You can either use the web interface to adjust the nozzle height from the bed, or `TESTZ Z=-0.01` to lower it. Use a piece of paper to measure the offset. Once finished remove the paper and accept the position:
+```
+ACCEPT
+```
+Save the results to your config file:
+```
+SAVE_CONFIG
+```
+### Initial Tests
+
+Home your Z (You can also just home all axis)@
+```
+G28 Z
+```
+You can test the accuracy:
+```
+PROBE_ACCURACY
+```
+
+You can also measure the backlash of your Z axis
+```
+IDM_ESTIMATE_BACKLASH
+```
+You can now run a Bed Mesh Calibration 
+```
+BED_MESH_CALIBRATE
+```
 
 
