@@ -27,12 +27,6 @@ This step will automatically create a link to the script and place it in the kli
 Add the following configuration to the top of your Printer.cfg file. Note, you need to replace the serial path with your probes serial path, this can be found by running the following command. 
 `ls /dev/serial/by-id/`
 
-For the CAN version, run this command to find your boards UUID:
-```bash
-~/klippy-env/bin/python ~/klipper/scripts/canbus_query.py can0
-```
-
-
 For the RP2040 version of the Cartographer3D please add the following config:
 
 ```yaml
@@ -82,7 +76,12 @@ mesh_runs: 2
 #   Number of passes to make during mesh scan.
 ```
 
-For the Input Shaper version of the Cartographer3D please add the following config:
+For the Input Shaper version of the Cartographer3D please add the following config, for the CAN version, run this command to find your boards UUID:
+
+```bash
+~/klippy-env/bin/python ~/klipper/scripts/canbus_query.py can0
+```
+
 
 ```yaml
 [cartographer]
