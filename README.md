@@ -87,8 +87,12 @@ For the Input Shaper version of the Cartographer3D please add the following conf
 ```yaml
 [cartographer]
 serial:
-#   Path to the serial port for the idm device. Typically has the form
+#   Path to the serial port for the Cartographer device. Typically has the form
 #   /dev/serial/by-id/usb-idm_idm_...
+#   
+#   If you are using the CAN Bus version, replace serial: with canbus_uuid: and add the UUID.
+#   Example: canbus_uuid: 1283as878a9sd
+#
 speed: 40.
 #   Z probing dive speed.
 lift_speed: 5.
