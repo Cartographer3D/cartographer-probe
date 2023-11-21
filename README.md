@@ -180,8 +180,13 @@ G0 X150 Y150
 ```
 
 Start the calibration process:
+V1: RP2040 Based
 ```
 IDM_CALIBRATE
+```
+V2: USB or CAN w/ Input Shaper
+```
+CARTOGRAPHER_CALIBRATE
 ```
 You can either use the web interface to adjust the nozzle height from the bed, or `TESTZ Z=-0.01` to lower it. Use a piece of paper to measure the offset. Once finished remove the paper and accept the position:
 ```
@@ -203,8 +208,13 @@ PROBE_ACCURACY
 ```
 
 You can also measure the backlash of your Z axis
+V1: RP2040 Based
 ```
 IDM_ESTIMATE_BACKLASH
+```
+V2: USB or CAN w/ Input Shaper
+```
+CARTOGRAPHER_BACKLASH
 ```
 You can now run a Bed Mesh Calibration 
 ```
