@@ -27,7 +27,7 @@ This step will automatically create a link to the script and place it in the kli
 Add the following configuration to the top of your Printer.cfg file. Note, you need to replace the serial path with your probes serial path, this can be found by running the following command. 
 `ls /dev/serial/by-id/`
 
-For the RP2040 version of the Cartographer3D please add the following config:
+V1: For the RP2040 version of the Cartographer3D please add the following config:
 
 ```yaml
 [idm]
@@ -76,7 +76,7 @@ mesh_runs: 2
 #   Number of passes to make during mesh scan.
 ```
 
-For the Input Shaper version of the Cartographer3D please add the following config, for the CAN version, run this command to find your boards UUID:
+V2: For the Input Shaper version of the Cartographer3D please add the following config, for the CAN version, run this command to find your boards UUID:
 
 ```bash
 ~/klippy-env/bin/python ~/klipper/scripts/canbus_query.py can0
@@ -208,13 +208,15 @@ PROBE_ACCURACY
 ```
 
 You can also measure the backlash of your Z axis
+
 V1: RP2040 Based
 ```
 IDM_ESTIMATE_BACKLASH
 ```
+
 V2: USB or CAN w/ Input Shaper
 ```
-CARTOGRAPHER_BACKLASH
+CARTOGRAPHER_ESTIMATE_BACKLASH
 ```
 You can now run a Bed Mesh Calibration 
 ```
